@@ -1,0 +1,17 @@
+C:\Users\User\Documents\HomeTest\bin\Debug\net6.0\HomeTest.exe
+C:\Users\User\Documents\HomeTest\bin\Debug\net6.0\HomeTest.deps.json
+C:\Users\User\Documents\HomeTest\bin\Debug\net6.0\HomeTest.runtimeconfig.json
+C:\Users\User\Documents\HomeTest\bin\Debug\net6.0\HomeTest.dll
+C:\Users\User\Documents\HomeTest\bin\Debug\net6.0\HomeTest.pdb
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.csproj.AssemblyReference.cache
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.AssemblyInfoInputs.cache
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.AssemblyInfo.cs
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.dll
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\refint\HomeTest.dll
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.pdb
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.genruntimeconfig.cache
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\ref\HomeTest.dll
+C:\Users\User\Documents\HomeTest\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\User\Documents\HomeTest\obj\Debug\net6.0\HomeTest.csproj.CopyComplete
