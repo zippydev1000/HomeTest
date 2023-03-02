@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Xml.Linq;
+using System.Diagnostics;
+
 
 namespace HomeTest
 {
@@ -13,14 +15,54 @@ namespace HomeTest
             string fileFormat = FileFormat();
             string folderPath = FolderPath();
             List<User> userList = new List<User>();
-            userList.AddRange(await JsonPlaceholderApi.GetUsersAsync());
-            userList.AddRange(await RandomUserApi.GetUsersAsync());
-            userList.AddRange(await DummyJsonApi.GetUsersAsync());
-            userList.AddRange(await ReqresApi.GetUsersAsync());
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
+            var usersTasks = new List<Task<List<User>>>
+            {
+                 JsonPlaceholderApi.GetUsersAsync(),
+                 RandomUserApi.GetUsersAsync(),
+                 DummyJsonApi.GetUsersAsync(),
+                 ReqresApi.GetUsersAsync()
 
+            };
+            List< Task <List < User >>> tasks = new List<Task<List<User>>>();
+            tasks.Add(Task.Run(() => JsonPlaceholderApi.GetUsersAsync()));
+            tasks.Add(Task.Run(() => RandomUserApi.GetUsersAsync()));
+            tasks.Add(Task.Run(() => DummyJsonApi.GetUsersAsync()));
+            tasks.Add(Task.Run(() => ReqresApi.GetUsersAsync()));
+            await Task.WhenAll(tasks);
+            tasks.ForEach(x =>
+            {
+                userList.AddRange(x.Result);
+            });
 
-            await CreateOutputFile(folderPath,fileFormat,userList);
+            await CreateOutputFile(folderPath, fileFormat, userList);
+
+            stopwatch.Stop();
+            TimeSpan ts = stopwatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds,
+                ts.Milliseconds / 10);
+            Console.WriteLine("RunTime " + elapsedTime);
+
+            
+            //userList.Clear();
+            //stopwatch.Start();
+            //userList.AddRange(await JsonPlaceholderApi.GetUsersAsync());
+            //userList.AddRange(await RandomUserApi.GetUsersAsync());
+            //userList.AddRange(await DummyJsonApi.GetUsersAsync());
+            //userList.AddRange(await ReqresApi.GetUsersAsync());
+
+            //await CreateOutputFile(folderPath, fileFormat, userList);
+
+            //stopwatch.Stop();
+            //ts = stopwatch.Elapsed;
+            //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            //    ts.Hours, ts.Minutes, ts.Seconds,
+            //    ts.Milliseconds / 10);
+            //Console.WriteLine("RunTime " + elapsedTime);
+
 
             Console.WriteLine($"the number of users is: {userList.Count()}");
             Console.ReadKey();
